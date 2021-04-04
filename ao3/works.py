@@ -311,7 +311,7 @@ class Work(object):
             return self._lookup_stat('fandom', [])
         elif self._source == 'search':
             fandom_tag = self._soup.find('h5', attrs={'class': 'fandoms'})
-            return fandom_tag.a.get_text().strip()
+            return fandom_tag.a.get_text().strip()  # TODO: this should probably be a lookup_stat_taglist
 
     @property
     def relationship(self):

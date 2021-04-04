@@ -4,7 +4,7 @@ import time
 
 from bs4 import BeautifulSoup
 
-from . import RestrictedWork, WorkNotFound
+from .utils import RestrictedWorkException, WorkNotFoundException
 
 
 class AO3Handler(object):
@@ -177,7 +177,7 @@ class AO3Handler(object):
         req = self.sess.get('https://archiveofourown.org/works/%s?view_adult=true' % work_id)
 
         if req.status_code == 404:
-            raise WorkNotFound('Unable to find a work with id %r' % work_id)
+            raise WorkNotFoundException('Unable to find a work with id %r' % work_id)
         elif req.status_code != 200:
             if req.text == 'Retry later':
                 pause = str(input('Received error {}. Should I pause for 5 min and then try again? Enter y for yes: '.format(req.text)))
@@ -196,6 +196,6 @@ class AO3Handler(object):
                 work_id)
 
         if 'This work is only available to registered users' in req.text:
-            raise RestrictedWork('Looking at work ID {} requires login'.format(work_id))
+            raise RestrictedWorkException('Looking at work ID {} requires login'.format(work_id))
 
         return req.text

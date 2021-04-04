@@ -41,3 +41,11 @@ def work_id_from_soup(soup: BeautifulSoup) -> str:
         raise RuntimeError("Could not find ao3 work link in soup")
 
     return a_tag['href'].split('/')[2]
+
+
+class WorkNotFoundException(Exception):
+    pass
+
+
+class RestrictedWorkException(Exception):
+    pass

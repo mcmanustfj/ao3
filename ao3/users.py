@@ -2,7 +2,6 @@ import re
 import collections
 from datetime import datetime
 
-from .handlers import AO3Handler
 from .works import iterate_pages, Work
 
 

@@ -18,7 +18,7 @@ long_description = codecs.open(README, encoding='utf-8').read()
 
 setup(
     name='ao3',
-    version='0',
+    version='0.0.1',
     description='A Python API for scraping AO3 (the Archive of Our Own)',
     long_description=long_description,
     url='https://github.com/mcmanustfj/ao3',
@@ -35,8 +35,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
-    packages=find_packages(SOURCE),
-    package_dir={'': SOURCE},
+    packages=['ao3'],
     install_requires=[
         'beautifulsoup4>=4.5.3, <5',
         'requests>=2.12.4, <3',

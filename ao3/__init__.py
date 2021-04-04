@@ -99,9 +99,3 @@ class AO3(object):
         print(self.handler.login(username, password))
 
 
-class WorkNotFound(Exception):
-    pass
-
-
-class RestrictedWork(Exception):
-    pass
